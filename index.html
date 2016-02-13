@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+
+
+        <table border="1" id="editme">
+            <tr data-db_id="1">
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+
+            </tr>
+            <tr data-db_id="2">
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+            <tr data-db_id="2">
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+            </tr>
+            <tr  data-db_id="3">
+                <td>John</td>
+                <td>Doe</td>
+                <td>80</td>
+            </tr>
+            <tr  data-db_id="4">
+                <td>John</td>
+                <td>Doe</td>
+                <td>80</td>
+            </tr>
+            <tr data-db_id="5">
+                <td>John</td>
+                <td>Doe</td>
+                <td>80</td>
+            </tr>
+            <tr  data-db_id="6">
+                <td>John</td>
+                <td>Doe</td>
+                <td>80</td>
+            </tr>
+        </table>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="edittable.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+
+                $("#editme").edittable({
+                    "col_headline":"Aktion",
+                    "onedit":function(json_data, core_obj, elem){
+                        window.setTimeout(function(){
+                            console.log(core_obj);
+                            core_obj.stop_spinner(elem);
+                        }, 5000);
+                    },
+                    "ondelete":function(json_data, core_obj, elem){
+                        window.setTimeout(function(){
+                            core_obj.stop_spinner(elem);
+                        }, 5000);
+                    }
+                });
+            });
+        </script>
+
+    </body>
+</html>
